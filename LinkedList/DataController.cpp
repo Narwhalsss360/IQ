@@ -8,7 +8,7 @@ DataController::DataController()
 
 void DataController::addData(DataType& d)
 {
-	d.next = NULL;
+	d.next = NULL; //Next of new is always Nothing.
 
 	if (firstInList == NULL)
 	{
@@ -24,11 +24,11 @@ void DataController::addData(DataType& d)
 
 DataType* DataController::search(dataID id)
 {
-	current = firstInList;
+	current = firstInList; //Start at beginning.
 	while (current)
 	{
 		if (current->id == id) return current;
-		else current = current->next;
+		else current = current->next; //Go to next item.
 	}
 	return NULL;
 }
