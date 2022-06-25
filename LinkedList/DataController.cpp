@@ -30,7 +30,7 @@ DataType* DataController::search(dataID id)
 	DataType* next;
 	while (current)
 	{
-		if (current->id) return current;
+		if (current->id == id) return current;
 		next = current->next;
 	}
 	return NULL;
