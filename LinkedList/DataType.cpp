@@ -1,21 +1,21 @@
 #include "DataLib.h"
 
 DataType::DataType()
-	: id(0), data(0), previous(NULL), next(NULL)
+	: id(0), data(0), next(NULL)
 {
 }
 
-DataType::DataType(dataID i, uint64_t d)
-	: id(i), data(d), previous(NULL), next(NULL)
+DataType::DataType(dataID i, specialData d)
+	: id(i), data(d), next(NULL)
 {
 }
 
-void DataType::set(uint64_t d)
+void DataType::set(specialData d)
 {
 	data = d;
 }
 
-uint64_t DataType::get()
+specialData DataType::get()
 {
 	return data;
 }

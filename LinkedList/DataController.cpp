@@ -1,30 +1,32 @@
+#include <iostream>
 #include "DataLib.h"
 
 DataController::DataController()
-	: first(NULL), current(NULL), last(NULL)
+	: firstInList(NULL), current(NULL), lastAdded(NULL)
 {
 }
 
 void DataController::addData(DataType& d)
 {
-	if (first == NULL)
+	if (firstInList == NULL)
 	{
-		first = &d;
-		d.previous = NULL;
+		firstInList = &d;
+		lastAdded = &d;
+		std::cout << "Added First DataType @ " << &d << '\n';
 	}
 	else
 	{
-		d.previous = last;
-		last->next = &d;
+		lastAdded->next = &d;
+		lastAdded = &d;
+		std::cout << "Added DataType @ " << &d << '\n';
 	}
 
 	d.next = NULL;
-	last = &d;
 }
 
 DataType* DataController::search(dataID id)
 {
-	current = first;
+	current = firstInList;
 	DataType* next;
 	while (current)
 	{
@@ -34,57 +36,19 @@ DataType* DataController::search(dataID id)
 	return NULL;
 }
 
-void DataController::deleteData(DataType& d)
-{
-	if (d.previous == NULL)
-	{
-		if (d.next == NULL)
-		{
-			first = NULL;
-			last = NULL;
-			return;
-		}
-		else
-		{
-			d.previous->next = NULL;
-			first = d.next;
-			d.next = NULL;
-			return;
-		}
-	}
-
-	if (d.next == NULL)
-	{
-		d.previous->next = NULL;
-		last = d.previous;
-		d.previous = NULL;
-		return;
-	}
-
-	d.previous->next = d.next;
-	d.next->previous = d.previous;
-	d.previous = NULL;
-	d.next = NULL;
-}
-
-void DataController::deleteData(dataID id)
-{
-	deleteData(*search(id));
-}
-
 void DataController::operator+=(DataType& d)
 {
 	addData(d);
 }
 
-void DataController::operator-=(DataType& d)
+specialData DataController::get(dataID id)
 {
-	deleteData(d);
+	return search(id)->data;
 }
 
-DataType* DataController::operator<<(dataID id)
+specialData DataController::operator<<(dataID id)
 {
-	return search(id);
+	return get(id);
 }
 
 DataController::~DataController()
