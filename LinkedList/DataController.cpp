@@ -8,30 +8,27 @@ DataController::DataController()
 
 void DataController::addData(DataType& d)
 {
+	d.next = NULL;
+
 	if (firstInList == NULL)
 	{
 		firstInList = &d;
-		lastAdded = &d;
-		std::cout << "Added First DataType @ " << &d << '\n';
 	}
 	else
 	{
 		lastAdded->next = &d;
-		lastAdded = &d;
-		std::cout << "Added DataType @ " << &d << '\n';
 	}
 
-	d.next = NULL;
+	lastAdded = &d;
 }
 
 DataType* DataController::search(dataID id)
 {
 	current = firstInList;
-	DataType* next;
 	while (current)
 	{
 		if (current->id == id) return current;
-		next = current->next;
+		else current = current->next;
 	}
 	return NULL;
 }
