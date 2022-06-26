@@ -14,7 +14,7 @@ Person p6 = Person("Person 6", 18);
 void printPersonName(DoublyLinkedListItem* i)
 {
 	Person item = *(Person*)i;
-	std::cout << item.getName() << '\n';
+	std::cout << '[' << item.index << "]: " << item.getName() << '\n';
 }
 
 int main()
@@ -27,11 +27,13 @@ int main()
 	p6.appendTo(list);
 
 	list.iterate(printPersonName);
-
 	std::cout << "Person 1 is: " << GET_PERSON(list[0]).getName() << "\n";
 
 	reverseDoublyLinkedList(&list);
+	std::cout << "\nReversed List:\n";
+	list.iterate(printPersonName);
 
+	std::cout << "\nSwapped indicies (4, 3):\n";
 	list.iterate(printPersonName);
 
 	std::cin.get();

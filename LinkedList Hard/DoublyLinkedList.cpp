@@ -122,6 +122,33 @@ void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 	itemCount--;
 }
 
+void DoublyLinkedList::swap(LinkedListItemIndex i1, LinkedListItemIndex i2)
+{
+	if (i1 == i2) return;
+	DoublyLinkedListItem* a = get(i1);
+	DoublyLinkedListItem* b = get(i2);
+	
+	if (a->previousItem) a->previousItem->nextItem = b;
+	else head = b;
+	if (a->nextItem) a->nextItem->previousItem = b;
+
+	if (b->previousItem) b->previousItem->nextItem = a;
+	else head = b;
+	if (b->nextItem) b->nextItem->previousItem = a;
+
+	DoublyLinkedListItem* prevA = a->previousItem;
+	DoublyLinkedListItem* nextA = a->nextItem;
+	LinkedListItemIndex indexA = a->index;
+
+	a->nextItem = b->nextItem;
+	a->previousItem = b->previousItem;
+	a->index = b->index;
+
+	b->nextItem = nextA;
+	b->previousItem = prevA;
+	b->index = indexA;
+}
+
 LinkedListItemIndex DoublyLinkedList::length()
 {
 	return itemCount;

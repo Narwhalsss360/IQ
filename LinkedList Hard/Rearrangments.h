@@ -32,12 +32,7 @@ void sortNameUp(DoublyLinkedList* list)
 	list->iterate([](DoublyLinkedListItem* item)
 		{
 			Person person = *(Person*)item;
-			Person nextPerson = *(Person*)item->nextItem;
-
-			uint8_t maxIteration = (person.getName().length() > nextPerson.getName().length()) ? person.getName().length() : nextPerson.getName().length();
-			for (uint8_t i = 0; i < maxIteration; i++)
-			{
-			}
+			
 		});
 }
 
