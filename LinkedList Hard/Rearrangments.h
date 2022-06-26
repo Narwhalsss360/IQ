@@ -1,6 +1,9 @@
 #pragma once
 #include "LinkedList.h"
 
+#define SORT_NAME_UP 0
+#define SORT_NAME_DOWN 1
+
 void reverseDoublyLinkedList(DoublyLinkedList* list)
 {
 	DoublyLinkedListItem* current = list->head; //Starting at head.
@@ -27,25 +30,23 @@ void reverseDoublyLinkedList(DoublyLinkedList* list)
 	}
 }
 
-void sortNameUp(DoublyLinkedList* list)
+void sortName(DoublyLinkedList* list, uint8_t dir = SORT_NAME_UP)
 {
-	list->iterate([](DoublyLinkedListItem* item)
+	void (*sorter)(DoublyLinkedListItem*);
+	if (dir == SORT_NAME_UP)
+	{
+		sorter = [](DoublyLinkedListItem* i)
 		{
-			Person person = *(Person*)item;
-			
-		});
-}
 
-void sortNameDown(DoublyLinkedList* list)
-{
-	list->iterate([](DoublyLinkedListItem* item)
+		};
+	}
+	else
+	{
+		sorter = [](DoublyLinkedListItem* i)
 		{
-			Person person = *(Person*)item;
-			Person nextPerson = *(Person*)item->nextItem;
 
-			uint8_t maxIteration = (person.getName().length() > nextPerson.getName().length()) ? person.getName().length() : nextPerson.getName().length();
-			for (uint8_t i = 0; i < maxIteration; i++)
-			{
-			}
-		});
+		};
+	}
+
+	list->iterate(sorter);
 }

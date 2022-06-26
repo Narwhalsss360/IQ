@@ -12,7 +12,7 @@ class Person : public DoublyLinkedListItem
 public:
 	Person();
 	Person(std::string, Age);
-	std::string getName();
+	std::string& getName();
 	void setName(std::string);
 	Age getAge();
 private:

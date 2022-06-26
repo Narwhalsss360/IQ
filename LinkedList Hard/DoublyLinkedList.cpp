@@ -122,31 +122,36 @@ void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 	itemCount--;
 }
 
+void DoublyLinkedList::swap(DoublyLinkedListItem* a, DoublyLinkedListItem* b)
+{
+	if (a == head) head = b;
+	if (b == head) head = a;
+
+	DoublyLinkedListItem* aNext = a->nextItem;
+	LinkedListItemIndex aIndex = a->index;
+	a->nextItem = b->nextItem;
+	a->index = b->index;
+
+	b->nextItem = aNext;
+	b->index = aIndex;
+	
+	if (a->nextItem) a->nextItem->previousItem = a;
+	if (b->nextItem) b->nextItem->previousItem = b;
+
+	DoublyLinkedListItem* aPrev = a->previousItem;
+	a->previousItem = b->previousItem;
+	b->previousItem = aPrev;
+	
+	if (a->previousItem) a->previousItem->nextItem = a;
+	if (b->previousItem) b->previousItem->nextItem = b;
+}
+
 void DoublyLinkedList::swap(LinkedListItemIndex i1, LinkedListItemIndex i2)
 {
 	if (i1 == i2) return;
 	DoublyLinkedListItem* a = get(i1);
 	DoublyLinkedListItem* b = get(i2);
-	
-	if (a->previousItem) a->previousItem->nextItem = b;
-	else head = b;
-	if (a->nextItem) a->nextItem->previousItem = b;
-
-	if (b->previousItem) b->previousItem->nextItem = a;
-	else head = b;
-	if (b->nextItem) b->nextItem->previousItem = a;
-
-	DoublyLinkedListItem* prevA = a->previousItem;
-	DoublyLinkedListItem* nextA = a->nextItem;
-	LinkedListItemIndex indexA = a->index;
-
-	a->nextItem = b->nextItem;
-	a->previousItem = b->previousItem;
-	a->index = b->index;
-
-	b->nextItem = nextA;
-	b->previousItem = prevA;
-	b->index = indexA;
+	swap(a, b);
 }
 
 LinkedListItemIndex DoublyLinkedList::length()

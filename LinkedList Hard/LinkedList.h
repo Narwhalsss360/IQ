@@ -41,6 +41,7 @@ public:
 	__LINKEDLIST_INLINE__ void prepend(DoublyLinkedListItem*);
 	__LINKEDLIST_INLINE__ void insert(DoublyLinkedListItem*, LinkedListItemIndex);
 	__LINKEDLIST_INLINE__ void remove(DoublyLinkedListItem*);
+	__LINKEDLIST_INLINE__ void swap(DoublyLinkedListItem*, DoublyLinkedListItem*);
 	__LINKEDLIST_INLINE__ void swap(LinkedListItemIndex, LinkedListItemIndex);
 
 	__LINKEDLIST_INLINE__ LinkedListItemIndex length();

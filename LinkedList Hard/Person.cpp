@@ -15,7 +15,7 @@ void Person::setName(std::string newName)
 	name = newName;
 }
 
-std::string Person::getName()
+std::string& Person::getName()
 {
 	return name;
 }
