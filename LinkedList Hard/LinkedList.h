@@ -9,49 +9,49 @@
 
 typedef uint32_t LinkedListItemIndex;
 
-class LinkedList;
+class DoublyLinkedList;
 
-class ListItem
+class DoublyLinkedListItem
 {
 public:
-	ListItem();
-	void appendTo(LinkedList*);
-	void prependTo(LinkedList*);
-	void insertTo(LinkedList*, LinkedListItemIndex);
-	void removeFrom(LinkedList*);
-	void appendTo(LinkedList&);
-	void prependTo(LinkedList&);
-	void insertTo(LinkedList&, LinkedListItemIndex);
-	void removeFrom(LinkedList&);
-	~ListItem();
+	DoublyLinkedListItem();
+	void appendTo(DoublyLinkedList*);
+	void prependTo(DoublyLinkedList*);
+	void insertTo(DoublyLinkedList*, LinkedListItemIndex);
+	void removeFrom(DoublyLinkedList*);
+	void appendTo(DoublyLinkedList&);
+	void prependTo(DoublyLinkedList&);
+	void insertTo(DoublyLinkedList&, LinkedListItemIndex);
+	void removeFrom(DoublyLinkedList&);
+	~DoublyLinkedListItem();
 
 private:
-	friend class LinkedList;
+	friend class DoublyLinkedList;
 	LinkedListItemIndex index;
-	ListItem* previousItem, * nextItem;
-	LinkedList* owner;
+	DoublyLinkedListItem* previousItem, * nextItem;
+	DoublyLinkedList* owner;
 };
 
-class LinkedList
+class DoublyLinkedList
 {
 public:
-	__LINKEDLIST_INLINE__ LinkedList();
-	__LINKEDLIST_INLINE__ ~LinkedList();
+	__LINKEDLIST_INLINE__ DoublyLinkedList();
+	__LINKEDLIST_INLINE__ ~DoublyLinkedList();
 
-	__LINKEDLIST_INLINE__ void append(ListItem*);
-	__LINKEDLIST_INLINE__ void prepend(ListItem*);
-	__LINKEDLIST_INLINE__ void insert(ListItem*, LinkedListItemIndex);
-	__LINKEDLIST_INLINE__ void remove(ListItem*);
+	__LINKEDLIST_INLINE__ void append(DoublyLinkedListItem*);
+	__LINKEDLIST_INLINE__ void prepend(DoublyLinkedListItem*);
+	__LINKEDLIST_INLINE__ void insert(DoublyLinkedListItem*, LinkedListItemIndex);
+	__LINKEDLIST_INLINE__ void remove(DoublyLinkedListItem*);
 
 	__LINKEDLIST_INLINE__ LinkedListItemIndex length();
-	__LINKEDLIST_INLINE__ ListItem* get(LinkedListItemIndex);
-	__LINKEDLIST_INLINE__ ListItem* begin();
-	__LINKEDLIST_INLINE__ ListItem* end();
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem* get(LinkedListItemIndex);
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem* begin();
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem* end();
 	
-	__LINKEDLIST_INLINE__ ListItem& operator[](LinkedListItemIndex);
-	__LINKEDLIST_INLINE__ void iterate(void (*)(ListItem*));
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem& operator[](LinkedListItemIndex);
+	__LINKEDLIST_INLINE__ void iterate(void (*)(DoublyLinkedListItem*));
 private:
-	friend class ListItem;
+	friend class DoublyLinkedListItem;
 	LinkedListItemIndex itemCount;
-	ListItem* firstItem;
+	DoublyLinkedListItem* firstItem;
 };

@@ -7,7 +7,7 @@
 
 typedef uint8_t Age;
 
-class Person : public ListItem
+class Person : public DoublyLinkedListItem
 {
 public:
 	Person();

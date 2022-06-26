@@ -6,7 +6,7 @@
 #define NOT_OWNED(pItem) (pItem->owner != this)
 
 #define INCREMENT_INDICES(pStart) \
-	ListItem* currentItem = pStart->nextItem; \
+	DoublyLinkedListItem* currentItem = pStart->nextItem; \
 	while (currentItem) \
 	{ \
 		currentItem->index++; \
@@ -14,25 +14,25 @@
 	}
 
 #define DECREMENT_INDICES(pStart) \
-	ListItem* currentItem = pStart->nextItem; \
+	DoublyLinkedListItem* currentItem = pStart->nextItem; \
 	while (currentItem) \
 	{ \
 		currentItem->index--; \
 		currentItem = currentItem->nextItem; \
 	}
 
-LinkedList::LinkedList()
+DoublyLinkedList::DoublyLinkedList()
 	: itemCount(0), firstItem(NULL)
 {
 }
 
-void LinkedList::append(ListItem* item)
+void DoublyLinkedList::append(DoublyLinkedListItem* item)
 {
 	if (CLAIMED(item)) return;
 	
 	if (length())
 	{
-		ListItem* lastItem = end();
+		DoublyLinkedListItem* lastItem = end();
 		lastItem->nextItem = item;
 		item->previousItem = lastItem;
 	}
@@ -48,7 +48,7 @@ void LinkedList::append(ListItem* item)
 	itemCount++;
 }
 
-void LinkedList::prepend(ListItem* item)
+void DoublyLinkedList::prepend(DoublyLinkedListItem* item)
 {
 	if (CLAIMED(item)) return;
 
@@ -71,11 +71,11 @@ void LinkedList::prepend(ListItem* item)
 	itemCount++;
 }
 
-void LinkedList::insert(ListItem* item, LinkedListItemIndex index)
+void DoublyLinkedList::insert(DoublyLinkedListItem* item, LinkedListItemIndex index)
 {
 	if (CLAIMED(item)) return;
 
-	ListItem* itemAtSelectedIndex = get(index);
+	DoublyLinkedListItem* itemAtSelectedIndex = get(index);
 
 	item->nextItem = itemAtSelectedIndex->nextItem;
 	itemAtSelectedIndex->nextItem = item;
@@ -89,7 +89,7 @@ void LinkedList::insert(ListItem* item, LinkedListItemIndex index)
 	itemCount++;
 }
 
-void LinkedList::remove(ListItem* item)
+void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 {
 	if (NOT_OWNED(item)) return;
 
@@ -122,16 +122,16 @@ void LinkedList::remove(ListItem* item)
 	itemCount--;
 }
 
-LinkedListItemIndex LinkedList::length()
+LinkedListItemIndex DoublyLinkedList::length()
 {
 	return itemCount;
 }
 
-ListItem* LinkedList::get(LinkedListItemIndex index)
+DoublyLinkedListItem* DoublyLinkedList::get(LinkedListItemIndex index)
 {
 	if (index < itemCount)
 	{
-		ListItem* current = firstItem;
+		DoublyLinkedListItem* current = firstItem;
 		while (current)
 		{
 			if (current->index == index) return current;
@@ -145,15 +145,15 @@ ListItem* LinkedList::get(LinkedListItemIndex index)
 	return NULL;
 }
 
-ListItem* LinkedList::begin()
+DoublyLinkedListItem* DoublyLinkedList::begin()
 {
 	if (length()) return firstItem;
 	return NULL;
 }
 
-ListItem* LinkedList::end()
+DoublyLinkedListItem* DoublyLinkedList::end()
 {
-	ListItem* current = firstItem;
+	DoublyLinkedListItem* current = firstItem;
 	while (current)
 	{
 		if (current->nextItem == NULL) return current;
@@ -162,12 +162,12 @@ ListItem* LinkedList::end()
 	return NULL;
 }
 
-ListItem& LinkedList::operator[](LinkedListItemIndex index)
+DoublyLinkedListItem& DoublyLinkedList::operator[](LinkedListItemIndex index)
 {
 	return *get(index);
 }
 
-void LinkedList::iterate(void (*doFunction)(ListItem*))
+void DoublyLinkedList::iterate(void (*doFunction)(DoublyLinkedListItem*))
 {
 	for (LinkedListItemIndex i = 0; i < itemCount; i++)
 	{
@@ -175,6 +175,6 @@ void LinkedList::iterate(void (*doFunction)(ListItem*))
 	}
 }
 
-LinkedList::~LinkedList()
+DoublyLinkedList::~DoublyLinkedList()
 {
 }

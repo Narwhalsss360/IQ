@@ -1,7 +1,7 @@
 #include "Person.h"
 
 Person::Person(std::string newName, Age newAge)
-	: ListItem(), name(newName), age(newAge)
+	: DoublyLinkedListItem(), name(newName), age(newAge)
 {
 }
 

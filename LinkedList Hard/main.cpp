@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Person.h"
 
-LinkedList list;
+DoublyLinkedList list;
 
 Person p1 = Person("Lila", 18);
 Person p2 = Person("Franklyn", 18);
@@ -10,7 +10,7 @@ Person p4 = Person("Person 4", 12);
 Person p5 = Person("Person 5", 25);
 Person p6 = Person("Person 6", 18);
 
-void personIterator(ListItem* i)
+void personIterator(DoublyLinkedListItem* i)
 {
 	Person item = *(Person*)i;
 	std::cout << item.getName() << '\n';
