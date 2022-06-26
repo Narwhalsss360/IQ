@@ -2,7 +2,7 @@
 #include "DataLib.h"
 
 DataController::DataController()
-	: firstInList(NULL), current(NULL), lastAdded(NULL)
+	: firstInList(NULL), current(NULL)
 {
 }
 
@@ -16,10 +16,8 @@ void DataController::addData(DataType& d)
 	}
 	else
 	{
-		lastAdded->next = &d;
+		end()->next = &d;
 	}
-
-	lastAdded = &d;
 }
 
 DataType* DataController::search(dataID id)
@@ -33,14 +31,30 @@ DataType* DataController::search(dataID id)
 	return NULL;
 }
 
-void DataController::operator+=(DataType& d)
+DataType* DataController::begin()
 {
-	addData(d);
+	return firstInList;
+}
+
+DataType* DataController::end()
+{
+	current = firstInList;
+	while (current)
+	{
+		if (current->next == NULL) return current;
+		current = current->next;
+	}
+	return NULL;
 }
 
 specialData DataController::get(dataID id)
 {
 	return search(id)->data;
+}
+
+void DataController::operator+=(DataType& d)
+{
+	addData(d);
 }
 
 specialData DataController::operator<<(dataID id)

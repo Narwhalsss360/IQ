@@ -16,7 +16,6 @@ public:
 	dataID getID();
 	~DataType();
 
-private:
 	friend class DataController;
 	DataType* next; //Previous & next DataType in list.
 	dataID id; //unique identifier.
@@ -31,9 +30,10 @@ public:
 	void addData(DataType&); //Add a instance to linked list.
 	DataType* search(dataID); //Get pointer to instance with id.
 	specialData get(dataID);
+	DataType* begin();
+	DataType* end();
 	void operator+=(DataType&);
 	specialData operator<<(dataID);
 
-private:
-	DataType* firstInList, *current, *lastAdded; //Pointers to first in list, current(getting data or whatever), last for the last one we just changed.
+	DataType* firstInList, *current; //Pointers to first in list, current(getting data or whatever), last for the last one we just changed.
 };

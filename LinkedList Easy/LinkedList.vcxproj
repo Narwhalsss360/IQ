@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="DataLib.h" />
     <ClInclude Include="PgmData.h" />
+    <ClInclude Include="Rearrengments.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

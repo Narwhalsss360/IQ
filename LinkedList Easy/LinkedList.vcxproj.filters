@@ -35,5 +35,8 @@
     <ClInclude Include="PgmData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rearrengments.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
