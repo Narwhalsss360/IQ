@@ -45,11 +45,10 @@ public:
 
 	__LINKEDLIST_INLINE__ LinkedListItemIndex length();
 	__LINKEDLIST_INLINE__ ListItem* get(LinkedListItemIndex);
-	__LINKEDLIST_INLINE__ ListItem* getFirstItem();
-	__LINKEDLIST_INLINE__ ListItem* getLastItem();
+	__LINKEDLIST_INLINE__ ListItem* begin();
+	__LINKEDLIST_INLINE__ ListItem* end();
 	
 	__LINKEDLIST_INLINE__ ListItem& operator[](LinkedListItemIndex);
-
 	__LINKEDLIST_INLINE__ void iterate(void (*)(ListItem*));
 private:
 	friend class ListItem;

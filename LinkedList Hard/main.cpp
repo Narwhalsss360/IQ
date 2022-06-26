@@ -10,7 +10,7 @@ Person p4 = Person("Person 4", 12);
 Person p5 = Person("Person 5", 25);
 Person p6 = Person("Person 6", 18);
 
-void iterator(ListItem* i)
+void personIterator(ListItem* i)
 {
 	Person item = *(Person*)i;
 	std::cout << item.getName() << '\n';
@@ -24,7 +24,7 @@ int main()
 	list.append(&p4);
 	list.append(&p5);
 	p6.appendTo(list);
-	list.iterate(iterator);
+	list.iterate(personIterator);
 
 	std::cout << "Person 1 is: " << GET_PERSON(list[0]).getName() << "\n";
 

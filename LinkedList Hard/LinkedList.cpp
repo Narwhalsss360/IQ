@@ -32,7 +32,7 @@ void LinkedList::append(ListItem* item)
 	
 	if (length())
 	{
-		ListItem* lastItem = getLastItem();
+		ListItem* lastItem = end();
 		lastItem->nextItem = item;
 		item->previousItem = lastItem;
 	}
@@ -145,13 +145,13 @@ ListItem* LinkedList::get(LinkedListItemIndex index)
 	return NULL;
 }
 
-ListItem* LinkedList::getFirstItem()
+ListItem* LinkedList::begin()
 {
 	if (length()) return firstItem;
 	return NULL;
 }
 
-ListItem* LinkedList::getLastItem()
+ListItem* LinkedList::end()
 {
 	ListItem* current = firstItem;
 	while (current)
