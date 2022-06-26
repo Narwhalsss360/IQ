@@ -25,7 +25,6 @@ public:
 	void removeFrom(DoublyLinkedList&);
 	~DoublyLinkedListItem();
 
-private:
 	friend class DoublyLinkedList;
 	LinkedListItemIndex index;
 	DoublyLinkedListItem* previousItem, * nextItem;
@@ -50,7 +49,7 @@ public:
 	
 	__LINKEDLIST_INLINE__ DoublyLinkedListItem& operator[](LinkedListItemIndex);
 	__LINKEDLIST_INLINE__ void iterate(void (*)(DoublyLinkedListItem*));
-private:
+
 	friend class DoublyLinkedListItem;
 	LinkedListItemIndex itemCount;
 	DoublyLinkedListItem* firstItem;
