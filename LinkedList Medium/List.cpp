@@ -99,8 +99,11 @@ void LinkedItemList::remove(ListItem& item)
 	}
 
 	decrementIndices(item);
+
+	//Merging neighbor items.
 	item.previousItem->nextItem = item.nextItem;
 	item.nextItem->previousItem = item.previousItem;
+
 	item.previousItem = NULL;
 	item.nextItem = NULL;
 	itemCount--;
