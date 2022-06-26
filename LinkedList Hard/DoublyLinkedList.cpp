@@ -22,7 +22,7 @@
 	}
 
 DoublyLinkedList::DoublyLinkedList()
-	: itemCount(0), firstItem(NULL)
+	: itemCount(0), head(NULL)
 {
 }
 
@@ -38,7 +38,7 @@ void DoublyLinkedList::append(DoublyLinkedListItem* item)
 	}
 	else
 	{
-		firstItem = item;
+		head = item;
 		item->previousItem = NULL;
 	}
 
@@ -54,12 +54,12 @@ void DoublyLinkedList::prepend(DoublyLinkedListItem* item)
 
 	if (length())
 	{
-		firstItem->previousItem = item;
-		firstItem = item;
+		head->previousItem = item;
+		head = item;
 	}
 	else
 	{
-		firstItem = item;
+		head = item;
 		item->nextItem = NULL;
 	}
 
@@ -95,7 +95,7 @@ void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 
 	if (item->previousItem == NULL)
 	{
-		firstItem = item->nextItem;
+		head = item->nextItem;
 		DECREMENT_INDICES(item);
 		item->previousItem = NULL;
 		item->nextItem = NULL;
@@ -131,7 +131,7 @@ DoublyLinkedListItem* DoublyLinkedList::get(LinkedListItemIndex index)
 {
 	if (index < itemCount)
 	{
-		DoublyLinkedListItem* current = firstItem;
+		DoublyLinkedListItem* current = head;
 		while (current)
 		{
 			if (current->index == index) return current;
@@ -147,13 +147,13 @@ DoublyLinkedListItem* DoublyLinkedList::get(LinkedListItemIndex index)
 
 DoublyLinkedListItem* DoublyLinkedList::begin()
 {
-	if (length()) return firstItem;
+	if (length()) return head;
 	return NULL;
 }
 
 DoublyLinkedListItem* DoublyLinkedList::end()
 {
-	DoublyLinkedListItem* current = firstItem;
+	DoublyLinkedListItem* current = head;
 	while (current)
 	{
 		if (current->nextItem == NULL) return current;

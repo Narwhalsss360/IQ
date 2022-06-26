@@ -52,5 +52,5 @@ public:
 
 	friend class DoublyLinkedListItem;
 	LinkedListItemIndex itemCount;
-	DoublyLinkedListItem* firstItem;
+	DoublyLinkedListItem* head;
 };
