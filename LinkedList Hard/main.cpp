@@ -1,3 +1,4 @@
+#define __INLINE_LINKEDLIST__
 #include <iostream>
 #include "Person.h"
 #include "Rearrangments.h"
