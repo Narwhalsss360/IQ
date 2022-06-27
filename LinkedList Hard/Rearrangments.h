@@ -3,6 +3,8 @@
 
 #define SORT_NAME_UP 0
 #define SORT_NAME_DOWN 1
+#define SORT_AGE_UP 0
+#define SORT_AGE_DOWN 1
 
 void reverseDoublyLinkedList(DoublyLinkedList* list)
 {
@@ -52,6 +54,33 @@ void sortName(DoublyLinkedList* list, uint8_t dir = SORT_NAME_UP)
 			if (!pA->nextItem) return;
 			Person* pB = (Person*)pA->nextItem;
 			if (strcmp(pA->getName().c_str(), pB->getName().c_str()) < 0) pA->owner->swap(pA, pB);
+		};
+	}
+
+	for (LinkedListItemIndex i = 0; i < list->length() - 1; i++) list->iterate(sorter);
+}
+
+void sortAge(DoublyLinkedList* list, uint8_t dir = SORT_AGE_UP)
+{
+	void (*sorter)(DoublyLinkedListItem*);
+	if (dir)
+	{
+		sorter = [](DoublyLinkedListItem* i)
+		{
+			Person* pA = (Person*)i;
+			if (!pA->nextItem) return;
+			Person* pB = (Person*)pA->nextItem;
+			if (pA->getAge() < pB->getAge()) pA->owner->swap(pA, pB);
+		};
+	}
+	else
+	{
+		sorter = [](DoublyLinkedListItem* i)
+		{
+			Person* pA = (Person*)i;
+			if (!pA->nextItem) return;
+			Person* pB = (Person*)pA->nextItem;
+			if (pA->getAge() > pB->getAge()) pA->owner->swap(pA, pB);
 		};
 	}
 
