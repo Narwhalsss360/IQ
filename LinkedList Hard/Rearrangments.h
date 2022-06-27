@@ -37,16 +37,22 @@ void sortName(DoublyLinkedList* list, uint8_t dir = SORT_NAME_UP)
 	{
 		sorter = [](DoublyLinkedListItem* i)
 		{
-
+			Person* pA = (Person*)i;
+			if (!pA->nextItem) return;
+			Person* pB = (Person*)pA->nextItem;
+			if (strcmp(pA->getName().c_str(), pB->getName().c_str()) > 0) pA->owner->swap(pA, pB);
 		};
 	}
 	else
 	{
 		sorter = [](DoublyLinkedListItem* i)
 		{
-
+			Person* pA = (Person*)i;
+			if (!pA->nextItem) return;
+			Person* pB = (Person*)pA->nextItem;
+			if (strcmp(pA->getName().c_str(), pB->getName().c_str()) < 0) pA->owner->swap(pA, pB);
 		};
 	}
 
-	list->iterate(sorter);
+	for (LinkedListItemIndex i = 0; i < list->length() - 1; i++) list->iterate(sorter);
 }

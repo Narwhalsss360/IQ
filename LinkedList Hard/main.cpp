@@ -32,12 +32,20 @@ int main()
 	std::cout << "\nReversed List:\n";
 	list.iterate(printPersonName);
 
-	list.swap(4, 5);
-	std::cout << "\nSwapped indicies (4, 3):\n";
+	list.swap(5, 4);
+	std::cout << "\nSwapped indicies (, ):\n";
 	list.iterate(printPersonName);
 
 	reverseDoublyLinkedList(&list);
 	std::cout << "\nRe-reversed List:\n";
+	list.iterate(printPersonName);
+
+	sortName(&list);
+	std::cout << "\nSorted by name [UP]:\n";
+	list.iterate(printPersonName);
+
+	sortName(&list, SORT_NAME_DOWN);
+	std::cout << "\nSorted by name [DOWN]:\n";
 	list.iterate(printPersonName);
 
 	std::cin.get();

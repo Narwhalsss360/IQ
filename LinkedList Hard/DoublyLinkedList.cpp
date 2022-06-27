@@ -124,8 +124,10 @@ void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 
 void DoublyLinkedList::swap(DoublyLinkedListItem* a, DoublyLinkedListItem* b)
 {
-	if (a == head) head = b;
-	if (b == head) head = a;
+	if (a == head)
+		head = b;
+	else if (b == head)
+		head = a;
 
 	DoublyLinkedListItem* aNext = a->nextItem;
 	LinkedListItemIndex aIndex = a->index;
@@ -141,7 +143,7 @@ void DoublyLinkedList::swap(DoublyLinkedListItem* a, DoublyLinkedListItem* b)
 	DoublyLinkedListItem* aPrev = a->previousItem;
 	a->previousItem = b->previousItem;
 	b->previousItem = aPrev;
-	
+
 	if (a->previousItem) a->previousItem->nextItem = a;
 	if (b->previousItem) b->previousItem->nextItem = b;
 }
