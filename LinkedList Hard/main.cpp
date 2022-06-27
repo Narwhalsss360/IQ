@@ -51,5 +51,13 @@ int main()
 	std::cout << "\nSorted by name [DOWN]:\n";
 	list.iterate(printPersonName);
 
+	std::cout << "\nRanged-Based for loop:\n";
+
+	for (auto& i : list)
+	{
+		Person p = *(Person*)&i;
+		std::cout << '[' << p.index << "]: " << p.getName() << '\n';
+	}
+
 	std::cin.get();
 }

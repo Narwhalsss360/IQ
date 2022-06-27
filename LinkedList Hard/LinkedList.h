@@ -31,6 +31,18 @@ public:
 	DoublyLinkedList* owner;
 };
 
+class IDoublyLinkedListItem
+{
+public:
+	IDoublyLinkedListItem(DoublyLinkedListItem*);
+	~IDoublyLinkedListItem();
+	DoublyLinkedListItem* item;
+
+	bool operator!=(IDoublyLinkedListItem);
+	DoublyLinkedListItem& operator*();
+	void operator++();
+};
+
 class DoublyLinkedList
 {
 public:
@@ -46,13 +58,18 @@ public:
 
 	__LINKEDLIST_INLINE__ LinkedListItemIndex length();
 	__LINKEDLIST_INLINE__ DoublyLinkedListItem* get(LinkedListItemIndex);
-	__LINKEDLIST_INLINE__ DoublyLinkedListItem* begin();
-	__LINKEDLIST_INLINE__ DoublyLinkedListItem* end();
+
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem* first();
+	__LINKEDLIST_INLINE__ DoublyLinkedListItem* last();
+
+	//Ranged based for loop implementation.
+	__LINKEDLIST_INLINE__ IDoublyLinkedListItem begin();
+	__LINKEDLIST_INLINE__ IDoublyLinkedListItem end();
 	
 	__LINKEDLIST_INLINE__ DoublyLinkedListItem& operator[](LinkedListItemIndex);
 	__LINKEDLIST_INLINE__ void iterate(void (*)(DoublyLinkedListItem*));
 
 	friend class DoublyLinkedListItem;
 	LinkedListItemIndex itemCount;
-	DoublyLinkedListItem* head;
+	DoublyLinkedListItem* head, * tail;
 };

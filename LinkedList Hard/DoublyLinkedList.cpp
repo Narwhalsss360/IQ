@@ -1,6 +1,7 @@
 #include "LinkedList.h"
 #include <stdexcept>
 
+#pragma region Defenitions
 #define UNCLAIMED(pItem) (pItem->owner == NULL)
 #define CLAIMED(pItem) (pItem->owner != NULL)
 #define NOT_OWNED(pItem) (pItem->owner != this)
@@ -20,9 +21,10 @@
 		currentItem->index--; \
 		currentItem = currentItem->nextItem; \
 	}
+#pragma endregion
 
 DoublyLinkedList::DoublyLinkedList()
-	: itemCount(0), head(NULL)
+	: itemCount(0), head(NULL), tail(NULL)
 {
 }
 
@@ -32,7 +34,7 @@ void DoublyLinkedList::append(DoublyLinkedListItem* item)
 	
 	if (length())
 	{
-		DoublyLinkedListItem* lastItem = end();
+		DoublyLinkedListItem* lastItem = last();
 		lastItem->nextItem = item;
 		item->previousItem = lastItem;
 	}
@@ -46,6 +48,7 @@ void DoublyLinkedList::append(DoublyLinkedListItem* item)
 	item->index = itemCount;
 	item->owner = this;
 	itemCount++;
+	tail = last();
 }
 
 void DoublyLinkedList::prepend(DoublyLinkedListItem* item)
@@ -69,6 +72,7 @@ void DoublyLinkedList::prepend(DoublyLinkedListItem* item)
 
 	INCREMENT_INDICES(item);
 	itemCount++;
+	tail = last();
 }
 
 void DoublyLinkedList::insert(DoublyLinkedListItem* item, LinkedListItemIndex index)
@@ -87,6 +91,7 @@ void DoublyLinkedList::insert(DoublyLinkedListItem* item, LinkedListItemIndex in
 	item->index = itemAtSelectedIndex->index + 1;
 	INCREMENT_INDICES(item);
 	itemCount++;
+	tail = last();
 }
 
 void DoublyLinkedList::remove(DoublyLinkedListItem* item)
@@ -120,6 +125,7 @@ void DoublyLinkedList::remove(DoublyLinkedListItem* item)
 	item->nextItem = NULL;
 	item->owner = NULL;
 	itemCount--;
+	tail = last();
 }
 
 void DoublyLinkedList::swap(DoublyLinkedListItem* a, DoublyLinkedListItem* b)
@@ -146,6 +152,7 @@ void DoublyLinkedList::swap(DoublyLinkedListItem* a, DoublyLinkedListItem* b)
 
 	if (a->previousItem) a->previousItem->nextItem = a;
 	if (b->previousItem) b->previousItem->nextItem = b;
+	tail = last();
 }
 
 void DoublyLinkedList::swap(LinkedListItemIndex i1, LinkedListItemIndex i2)
@@ -179,13 +186,13 @@ DoublyLinkedListItem* DoublyLinkedList::get(LinkedListItemIndex index)
 	return NULL;
 }
 
-DoublyLinkedListItem* DoublyLinkedList::begin()
+DoublyLinkedListItem* DoublyLinkedList::first()
 {
-	if (length()) return head;
-	return NULL;
+	if (head) return head;
+	else return NULL;
 }
 
-DoublyLinkedListItem* DoublyLinkedList::end()
+DoublyLinkedListItem* DoublyLinkedList::last()
 {
 	DoublyLinkedListItem* current = head;
 	while (current)
@@ -194,6 +201,18 @@ DoublyLinkedListItem* DoublyLinkedList::end()
 		current = current->nextItem;
 	}
 	return NULL;
+}
+
+IDoublyLinkedListItem DoublyLinkedList::begin()
+{
+	tail = last();
+	if (length()) return IDoublyLinkedListItem(head);
+	return NULL;
+}
+
+IDoublyLinkedListItem DoublyLinkedList::end()
+{
+	return IDoublyLinkedListItem(tail);
 }
 
 DoublyLinkedListItem& DoublyLinkedList::operator[](LinkedListItemIndex index)

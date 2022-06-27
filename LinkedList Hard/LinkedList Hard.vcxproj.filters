@@ -36,6 +36,9 @@
     <ClCompile Include="DoublyLinkedList.cpp">
       <Filter>LinkedList Library\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IDoublyLinkedListItem.cpp">
+      <Filter>LinkedList Library\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">
