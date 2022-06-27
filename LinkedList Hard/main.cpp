@@ -2,6 +2,9 @@
 #include "Person.h"
 #include "Rearrangments.h"
 
+const int index1 = 5;
+const int index2 = 4;
+
 DoublyLinkedList list;
 
 Person p1 = Person("Lila", 18);
@@ -32,8 +35,8 @@ int main()
 	std::cout << "\nReversed List:\n";
 	list.iterate(printPersonName);
 
-	list.swap(5, 4);
-	std::cout << "\nSwapped indicies (, ):\n";
+	list.swap(index1, index2);
+	std::cout << "\nSwapped indicies (" << index1 << ", " << index2 << "):\n";
 	list.iterate(printPersonName);
 
 	reverseDoublyLinkedList(&list);
