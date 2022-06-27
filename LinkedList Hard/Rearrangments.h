@@ -30,6 +30,7 @@ void reverseDoublyLinkedList(DoublyLinkedList* list)
 	}
 }
 
+//Slow bubble sort, continues to iterate and compare after the point of sorted elements. https://www.youtube.com/watch?v=Cq7SMsQBEUw&ab_channel=TimoBingmann
 void sortName(DoublyLinkedList* list, uint8_t dir = SORT_NAME_UP)
 {
 	void (*sorter)(DoublyLinkedListItem*);
