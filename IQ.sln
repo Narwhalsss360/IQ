@@ -8,11 +8,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Easy", "LinkedList Easy\LinkedList.vcxproj", "{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkedLists", "LinkedLists", "{4A30B27C-02A5-47E5-901E-AE58D7718E6D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Medium", "LinkedList Medium\LinkedList Medium.vcxproj", "{F3590270-5946-4888-9FB6-29940744ACA8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Easy", "LinkedLists\LinkedList Easy\LinkedList.vcxproj", "{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Hard", "LinkedList Hard\LinkedList Hard.vcxproj", "{1F145B06-28E6-43D7-B3EB-12C45A207091}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Hard", "LinkedLists\LinkedList Hard\LinkedList Hard.vcxproj", "{1F145B06-28E6-43D7-B3EB-12C45A207091}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Medium", "LinkedLists\LinkedList Medium\LinkedList Medium.vcxproj", "{F3590270-5946-4888-9FB6-29940744ACA8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList Final", "LinkedLists\Final\LinkedList Final\LinkedList Final.vcxproj", "{E9C3644D-E91B-479B-B4A4-C70E6A30646A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Final", "Final", "{1EDCF0A9-25C5-433B-9FB3-3739B4776BFC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems", "{09B1DD28-EB25-49C6-A4D0-15AC4E783708}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YouTube Video Lists", "LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems", "{F5A0E678-7697-4BE5-A207-E05E1FAF0F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +40,6 @@ Global
 		{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC}.Release|x64.Build.0 = Release|x64
 		{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC}.Release|x86.ActiveCfg = Release|Win32
 		{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC}.Release|x86.Build.0 = Release|Win32
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x64.ActiveCfg = Debug|x64
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x64.Build.0 = Debug|x64
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x86.ActiveCfg = Debug|Win32
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x86.Build.0 = Debug|Win32
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x64.ActiveCfg = Release|x64
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x64.Build.0 = Release|x64
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x86.ActiveCfg = Release|Win32
-		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x86.Build.0 = Release|Win32
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Debug|x64.ActiveCfg = Debug|x64
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Debug|x64.Build.0 = Debug|x64
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Debug|x86.ActiveCfg = Debug|Win32
@@ -46,11 +48,42 @@ Global
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Release|x64.Build.0 = Release|x64
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Release|x86.ActiveCfg = Release|Win32
 		{1F145B06-28E6-43D7-B3EB-12C45A207091}.Release|x86.Build.0 = Release|Win32
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x64.ActiveCfg = Debug|x64
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x64.Build.0 = Debug|x64
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x86.ActiveCfg = Debug|Win32
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Debug|x86.Build.0 = Debug|Win32
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x64.ActiveCfg = Release|x64
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x64.Build.0 = Release|x64
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x86.ActiveCfg = Release|Win32
+		{F3590270-5946-4888-9FB6-29940744ACA8}.Release|x86.Build.0 = Release|Win32
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Debug|x64.ActiveCfg = Debug|x64
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Debug|x64.Build.0 = Debug|x64
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Debug|x86.ActiveCfg = Debug|Win32
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Debug|x86.Build.0 = Debug|Win32
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Release|x64.ActiveCfg = Release|x64
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Release|x64.Build.0 = Release|x64
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Release|x86.ActiveCfg = Release|Win32
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51F7799F-762C-4CB3-8EA4-D01ACDAFFBDC} = {4A30B27C-02A5-47E5-901E-AE58D7718E6D}
+		{1F145B06-28E6-43D7-B3EB-12C45A207091} = {4A30B27C-02A5-47E5-901E-AE58D7718E6D}
+		{F3590270-5946-4888-9FB6-29940744ACA8} = {4A30B27C-02A5-47E5-901E-AE58D7718E6D}
+		{E9C3644D-E91B-479B-B4A4-C70E6A30646A} = {1EDCF0A9-25C5-433B-9FB3-3739B4776BFC}
+		{1EDCF0A9-25C5-433B-9FB3-3739B4776BFC} = {4A30B27C-02A5-47E5-901E-AE58D7718E6D}
+		{09B1DD28-EB25-49C6-A4D0-15AC4E783708} = {1EDCF0A9-25C5-433B-9FB3-3739B4776BFC}
+		{F5A0E678-7697-4BE5-A207-E05E1FAF0F76} = {1EDCF0A9-25C5-433B-9FB3-3739B4776BFC}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39F2230E-74DB-4D9F-B02D-A4B2B62A6D96}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems*{09b1dd28-eb25-49c6-a4d0-15ac4e783708}*SharedItemsImports = 9
+		LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems*{e9c3644d-e91b-479b-b4a4-c70e6a30646a}*SharedItemsImports = 4
+		LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems*{e9c3644d-e91b-479b-b4a4-c70e6a30646a}*SharedItemsImports = 4
+		LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems*{f5a0e678-7697-4be5-a207-e05e1faf0f76}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

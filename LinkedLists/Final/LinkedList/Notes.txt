@@ -1,0 +1,1 @@
+In this project, you can refer LinkedList as a Doubly Linked List.
