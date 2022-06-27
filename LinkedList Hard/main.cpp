@@ -30,7 +30,7 @@ int main()
 	p6.appendTo(list);
 
 	list.iterate(printPersonName);
-	std::cout << "Person 1 is: " << GET_PERSON(list[0]).getName() << "\n";
+	std::cout << "Person 1 is: " << GET_PERSON(&list[0]).getName() << "\n";
 
 	reverseDoublyLinkedList(&list);
 	std::cout << "\nReversed List:\n";
@@ -55,14 +55,14 @@ int main()
 	std::cout << "\nRegular for loop:\n";
 	for (IDoublyLinkedListItem iterator = list.begin(); iterator != list.end(); ++iterator)
 	{
-		Person p = GET_PERSON_FROM_PTR(iterator.item);
+		Person p = GET_PERSON(iterator.item);
 		std::cout << '[' << p.index << "]: " << p.getName() << '\n';
 	}
 
 	std::cout << "\nRanged-Based for loop:\n";
 	for (auto& i : list)
 	{
-		Person p = GET_PERSON(i);
+		Person p = GET_PERSON(&i);
 		std::cout << '[' << p.index << "]: " << p.getName() << '\n';
 	}
 
