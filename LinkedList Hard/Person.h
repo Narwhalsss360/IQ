@@ -4,6 +4,7 @@
 
 #define NOT_A_PERSON(p) (p.name == "" && p.age == 0)
 #define GET_PERSON(toReinterpret) (*(Person*)&toReinterpret)
+#define GET_PERSON_FROM_PTR(toReinterpret) (*(Person*)toReinterpret)
 
 typedef uint8_t Age;
 

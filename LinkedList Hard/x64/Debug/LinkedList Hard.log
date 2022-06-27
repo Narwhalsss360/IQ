@@ -1,2 +1,5 @@
-﻿  main.cpp
+﻿  Person.cpp
+  main.cpp
+C:\Users\sandr\source\repos\Narwhalsss360\IQ\LinkedList Hard\main.cpp(54,15): warning C4129: 'R': unrecognized character escape sequence
+  Generating Code...
   LinkedList Hard.vcxproj -> C:\Users\sandr\source\repos\Narwhalsss360\IQ\x64\Debug\LinkedList Hard.exe

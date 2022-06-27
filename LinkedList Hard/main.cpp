@@ -51,11 +51,17 @@ int main()
 	std::cout << "\nSorted by name [DOWN]:\n";
 	list.iterate(printPersonName);
 
-	std::cout << "\nRanged-Based for loop:\n";
+	std::cout << "\nRegular for loop:\n";
+	for (IDoublyLinkedListItem iterator = list.begin(); iterator != list.end(); ++iterator)
+	{
+		Person p = GET_PERSON_FROM_PTR(iterator.item);
+		std::cout << '[' << p.index << "]: " << p.getName() << '\n';
+	}
 
+	std::cout << "\nRanged-Based for loop:\n";
 	for (auto& i : list)
 	{
-		Person p = *(Person*)&i;
+		Person p = GET_PERSON(i);
 		std::cout << '[' << p.index << "]: " << p.getName() << '\n';
 	}
 
