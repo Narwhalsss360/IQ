@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Final", "Final", "{1EDCF0A9
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems", "{09B1DD28-EB25-49C6-A4D0-15AC4E783708}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YouTube Video Lists", "LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems", "{F5A0E678-7697-4BE5-A207-E05E1FAF0F76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YouTube", "LinkedLists\Final\YouTube\YouTube Video Lists.vcxitems", "{F5A0E678-7697-4BE5-A207-E05E1FAF0F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,7 +83,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems*{09b1dd28-eb25-49c6-a4d0-15ac4e783708}*SharedItemsImports = 9
 		LinkedLists\Final\LinkedList\LinkedListSharedItems.vcxitems*{e9c3644d-e91b-479b-b4a4-c70e6a30646a}*SharedItemsImports = 4
-		LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems*{e9c3644d-e91b-479b-b4a4-c70e6a30646a}*SharedItemsImports = 4
-		LinkedLists\Final\YouTube Video Lists\YouTube Video Lists.vcxitems*{f5a0e678-7697-4be5-a207-e05e1faf0f76}*SharedItemsImports = 9
+		LinkedLists\Final\YouTube\YouTube Video Lists.vcxitems*{e9c3644d-e91b-479b-b4a4-c70e6a30646a}*SharedItemsImports = 4
+		LinkedLists\Final\YouTube\YouTube Video Lists.vcxitems*{f5a0e678-7697-4be5-a207-e05e1faf0f76}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

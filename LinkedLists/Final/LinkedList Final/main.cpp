@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define TEST
+//#define TEST
 #ifdef TEST
 #include "LinkedList.h"
 #else
@@ -74,6 +74,128 @@ void listTest()
 	std::cin.get();
 }
 #pragma endregion
+#else
+LinkedList<YouTubeChannel> channels = LinkedList<YouTubeChannel>();
+
+#pragma region Channels
+YouTubeChannel channel_ArranStewart = YouTubeChannel("Arran Stewart");
+YouTubeChannel channel_PaulDavids = YouTubeChannel("Paul Davids");
+YouTubeChannel channel_PolarBear = YouTubeChannel("PolarBear");
+#pragma endregion
+
+YouTubeAdmin* admin;
+#endif
+
+#ifndef TEST
+void addChannels()
+{
+	channels += channel_ArranStewart;
+	channels += channel_PaulDavids;
+	channels += channel_PolarBear;
+}
+
+void addVideos()
+{
+	channel_ArranStewart.newVideo(	admin->newVideo(&channel_ArranStewart,
+									14,
+									"New York Subway 6",
+									"Part 4 From 1980`s to 1990`s",
+									"https://www.youtube.com/watch?v=SDP628jQ41w&ab_channel=ArranStewart",
+									96454,
+									346,
+									0));
+
+	channel_ArranStewart.newVideo(	admin->newVideo(&channel_ArranStewart,
+									14,
+									"Subway Were Preservation Or Scrap",
+									"this  movie  about   Subway Were   Preservation or  Scraps",
+									"https://www.youtube.com/watch?v=SDP628jQ41w&ab_channel=ArranStewart",
+									22408,
+									92,
+									0));
+
+	channel_ArranStewart.newVideo(	admin->newVideo(&channel_ArranStewart,
+									14,
+									"ttc subways",
+									"ttc  history  of  subway  in Toronto",
+									"https://www.youtube.com/watch?v=CyVkyEClc00&ab_channel=ArranStewart",
+									73041,
+									270,
+									0));
+
+	channel_PolarBear.newVideo(	admin->newVideo(&channel_PolarBear,
+								3,
+								"Volvo is mad at pizza hut",
+								"",
+								"https://www.youtube.com/watch?v=wOA4lW5Qycw&ab_channel=PolarBear",
+								189,
+								5,
+								0));
+
+	channel_PolarBear.newVideo(	admin->newVideo(&channel_PolarBear,
+								5,
+								"4k Deagle Dust 2 Edit",
+								"",
+								"https://www.youtube.com/watch?v=S8riWI419fE&ab_channel=PolarBear",
+								152,
+								4,
+								0));
+
+	channel_PolarBear.newVideo(	admin->newVideo(&channel_PolarBear,
+								5,
+								"Elemental Knives -Karambit 2.0 Unboxing/ Review-",
+								"",
+								"https://www.youtube.com/watch?v=wHSKxCfgvGU&t=93s&ab_channel=PolarBear",
+								5433,
+								81,
+								0));
+
+	channel_PolarBear.newVideo(	admin->newVideo(&channel_PolarBear,
+								5,
+								"Elemental Knives -Karambit 2.0 Unboxing/ Review-",
+								"",
+								"https://www.youtube.com/watch?v=wHSKxCfgvGU&t=93s&ab_channel=PolarBear",
+								5433,
+								81,
+								0));
+
+	channel_PaulDavids.newVideo(admin->newVideo(&channel_PaulDavids,
+								1,
+								"How Paul Simon wrote the PERFECT chord progression",
+								"We take a look at a wonderful Paul Simon track and gradually increase the complexity of the chords used. Tabs are available at my Patreon page!",
+								"https://www.youtube.com/watch?v=SjPAeTrF1zg&ab_channel=PaulDavids",
+								2402639,
+								43000,
+								0));
+
+	channel_PaulDavids.newVideo(admin->newVideo(&channel_PaulDavids,
+								1,
+								"I can't believe I finally played this guitar | Extremely RARE Fender Stratocaster",
+								"Join me on a guitar hunt in Los Angeles! We're visiting Norman's Rare Guitars and we play the most amazing guitars I've ever seen!",
+								"https://www.youtube.com/watch?v=zZxd7UmEd7M&ab_channel=PaulDavids",
+								1702689,
+								49000,
+								0));
+
+	channel_PaulDavids.newVideo(admin->newVideo(&channel_PaulDavids,
+								1,
+								"THE STAIRWAY CHORD (and why nobody knows it's name...)",
+								"This is the story about a mysterious chord that after 5 decades still hasn't been discovered... What is it's name? Thanks to @Adam Neely and @Rick Beato  for helping out!",
+								"https://www.youtube.com/watch?v=eXqNyWehVEQ&ab_channel=PaulDavids",
+								570010,
+								28000,
+								0));
+}
+
+void setData()
+{
+	admin->setSubscribers(&channel_ArranStewart, 625);
+	admin->setViews(&channel_ArranStewart, 629059);
+	admin->setSubscribers(&channel_PolarBear, 610);
+	admin->setViews(&channel_PolarBear, 22429);
+	admin->setSubscribers(&channel_PaulDavids, 2830000);
+	admin->setViews(&channel_PaulDavids, 334240199);
+}
 #endif
 
 int main()
@@ -81,5 +203,31 @@ int main()
 #ifdef TEST
 	listTest();
 	return 0;
+#else
+	admin = authenticate(69);
+	if (admin == nullptr) throw std::exception("Authentication Error");
+	addChannels();
+	addVideos();
+	setData();
+
+	for (auto& channel : channels)
+	{
+		std::cout << '[' << channel.getName() << " Subscribers:" << channel.getSubscribers() << " Views:" << channel.getViews() << "]:\n";
+		for (auto& video : channel.videos)
+		{
+			if (video.getNodeIndex() != 0) std::cout << "-----------------------------------------\n\n";
+			std::cout << "  Title:" << video.getTitle() << '\n';
+			std::cout << "  Years Ago:" << video.getTimeOfUpload() << '\n';
+			std::cout << "  Views:" << video.getViews() << '\n';
+			std::cout << "  Description:" << video.getDescription() << '\n';
+			std::cout << "  Likes:" << video.getLikes() << '\n';
+			std::cout << "  Dislikes:" << video.getDislikes() << "\n";
+			std::cout << "  URL:" << video.getURL() << "\n\n";
+		}
+
+		if (!(channel.getNodeIndex() == channels.length() - 1)) std::cout << "=========================================\n\n";
+	}
+
+	std::cin.get();
 #endif
 }
