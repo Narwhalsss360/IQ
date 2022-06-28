@@ -1,0 +1,8 @@
+﻿  DataController.cpp
+  DataType.cpp
+  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 31 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  LinkedList.vcxproj -> C:\Users\sandr\source\repos\Narwhalsss360\IQ\x64\Release\LinkedList Easy.exe

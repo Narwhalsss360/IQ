@@ -1,0 +1,10 @@
+﻿  IDoublyLinkedListItem.cpp
+  main.cpp
+  DoublyLinkedList.cpp
+  DoublyLinkedListItem.cpp
+  Person.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 157 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  LinkedList Hard.vcxproj -> C:\Users\sandr\source\repos\Narwhalsss360\IQ\x64\Release\LinkedList Hard.exe
