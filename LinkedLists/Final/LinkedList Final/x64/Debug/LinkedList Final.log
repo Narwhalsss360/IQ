@@ -1,4 +1,8 @@
-﻿  YouTubeVideo.cpp
+﻿  Auth.cpp
+  ListUtil.cpp
+  YouTubeAdmin.cpp
+  YouTubeChannel.cpp
+  YouTubeVideo.cpp
   main.cpp
   Generating Code...
   LinkedList Final.vcxproj -> C:\Users\sandr\source\repos\Narwhalsss360\IQ\x64\Debug\LinkedList Final.exe

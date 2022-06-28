@@ -8,6 +8,9 @@ template <typename T>
 class LinkedList;
 
 template <typename T>
+class INode;
+
+template <typename T>
 class Node
 {
 public:
@@ -18,10 +21,26 @@ public:
 	~Node();
 
 	friend class LinkedList<T>;
+	friend class INode<T>;
 private:
 	LinkedList<T>* owner;
 	NodeIndex index;
 	Node<T>* previousNode, * nextNode;
+};
+
+//Ranged-Based for loop support.
+template <typename T>
+class INode
+{
+public:
+	INode(Node<T>*);
+	bool operator!=(INode);
+	T& operator*();
+	void operator++();
+	~INode();
+
+private:
+	Node<T>* current;
 };
 
 template <typename T>
@@ -36,6 +55,11 @@ public:
 	void swap(T*, T*);
 	NodeIndex length();
 	Node<T>* get(NodeIndex);
+	T& operator[](NodeIndex);
+	void operator+=(T&);
+	void operator-=(T&);
+	INode<T> begin();
+	INode<T> end();
 	~LinkedList();
 
 private:

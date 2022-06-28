@@ -38,6 +38,37 @@ Node<T>::~Node()
 }
 #pragma endregion
 
+#pragma region INode
+template<typename T>
+INode<T>::INode(Node<T>* newItem)
+	: current(newItem)
+{
+}
+
+template <typename T>
+bool INode<T>::operator!=(INode<T> r)
+{
+	return (current != nullptr);
+}
+
+template <typename T>
+T& INode<T>::operator*()
+{
+	return *(T*)current;
+}
+
+template <typename T>
+void INode<T>::operator++()
+{
+	current = current->nextNode;
+}
+
+template <typename T>
+INode<T>::~INode()
+{
+}
+#pragma endregion
+
 #pragma region LinkedList<typename> Defenition
 template <typename T>
 LinkedList<T>::LinkedList()
@@ -214,7 +245,7 @@ Node<T>* LinkedList<T>::get(NodeIndex index)
 template <typename T>
 void LinkedList<T>::incrementIndices(Node<T>* start)
 {
-	Node<T>* current = head->nextNode;
+	Node<T>* current = start->nextNode;
 	while (current)
 	{
 		current->index++;
@@ -225,12 +256,43 @@ void LinkedList<T>::incrementIndices(Node<T>* start)
 template <typename T>
 void LinkedList<T>::decrementIndices(Node<T>* start)
 {
-	Node<T>* current = head->nextNode;
+	Node<T>* current = start->nextNode;
 	while (current)
 	{
 		current->index--;
 		current = current->nextNode;
 	}
+}
+
+template <typename T>
+T& LinkedList<T>::operator[](NodeIndex index)
+{
+	return *((T*)get(index));
+}
+
+template <typename T>
+void LinkedList<T>::operator+=(T& item)
+{
+	append(&item);
+}
+
+template <typename T>
+void LinkedList<T>::operator-=(T& item)
+{
+	remove(&item);
+}
+
+template <typename T>
+INode<T> LinkedList<T>::begin()
+{
+	if (!count) throw std::exception("List is empty, cannot iterate an empty list.");
+	return INode<T>(head);
+}
+
+template <typename T>
+INode<T> LinkedList<T>::end()
+{
+	return INode<T>(tail);
 }
 
 template <typename T>

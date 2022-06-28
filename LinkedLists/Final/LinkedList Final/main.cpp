@@ -1,15 +1,15 @@
 #include <iostream>
 
-//#define TEST
+#define TEST
 #ifdef TEST
 #include "LinkedList.h"
 #else
-#include "YouTubeVideo.h"
+#include "YouTube.h"
 #endif
 
 #ifdef TEST
 #pragma region Testing
-class Int : Node<Int>
+class Int : public Node<Int>
 {
 public:
 	Int()
@@ -42,7 +42,7 @@ void listTest()
 	Int h(80);
 
 	list.append(&a);
-	list.append(&b);
+	list += b;
 	list.prepend(&c);
 	list.append(&d);
 	list.append(&e);
@@ -53,7 +53,9 @@ void listTest()
 
 	list.insert(&h, 4);
 
-	list.remove(&b);
+	list -= b;
+
+	Int third = list[2];
 
 	try
 	{
@@ -64,17 +66,20 @@ void listTest()
 		std::cout << "Given index was out of range!\n";
 	}
 
+	for (auto& i : list)
+	{
+		std::cout << '[' << (int)i.getNodeIndex() << "]: " << i.get() << '\n';
+	}
+
 	std::cin.get();
 }
 #pragma endregion
 #endif
 
-
-
 int main()
 {
 #ifdef TEST
 	listTest();
+	return 0;
 #endif
-
 }
