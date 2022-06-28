@@ -60,6 +60,19 @@ void sortName(DoublyLinkedList* list, uint8_t dir = SORT_NAME_UP)
 	for (LinkedListItemIndex i = 0; i < list->length() - 1; i++) list->iterate(sorter);
 }
 
+template <typename T>
+void bubbleSort(DoublyLinkedList* list, int (*compareFunction)(T*, T*))
+{
+	for (uint32_t Outer = 0; Outer < list->length() - 1; Outer++)
+	{
+		for (uint32_t Inner = 0; Inner < list->length() - Outer - 1; Inner++)
+		{
+			if (compareFunction((T*)list->get(Inner), (T*)list->get(Inner + 1)) > 0)
+				list->swap(list->get(Inner), list->get(Inner + 1));
+		}
+	}
+}
+
 void sortAge(DoublyLinkedList* list, uint8_t dir = SORT_AGE_UP)
 {
 	void (*sorter)(DoublyLinkedListItem*);

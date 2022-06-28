@@ -11,6 +11,9 @@ template <typename T>
 class INode;
 
 template <typename T>
+class ListUtility;
+
+template <typename T>
 class Node
 {
 public:
@@ -21,6 +24,7 @@ public:
 	~Node();
 
 	friend class LinkedList<T>;
+	friend class ListUtility<T>;
 	friend class INode<T>;
 private:
 	LinkedList<T>* owner;
@@ -44,6 +48,26 @@ private:
 };
 
 template <typename T>
+class PrimitiveNode : public Node<PrimitiveNode<T>>
+{
+public:
+	PrimitiveNode();
+	PrimitiveNode(T&);
+	PrimitiveNode(T&&);
+
+	T& get() const;
+	void set(T&);
+	void set(T&&);
+
+	operator T& () const;
+
+	void operator=(T&);
+	void operator=(T&&);
+private:
+	mutable T data;
+};
+
+template <typename T>
 class LinkedList
 {
 public:
@@ -61,10 +85,23 @@ public:
 	INode<T> begin();
 	INode<T> end();
 	~LinkedList();
+	friend class ListUtility<T>;
 
 private:
 	void incrementIndices(Node<T>*);
 	void decrementIndices(Node<T>*);
 	NodeIndex count;
 	Node<T>* head, * tail;
+};
+
+template <typename T>
+class ListUtility
+{
+public:
+	ListUtility(LinkedList<T>*);
+	void reverse();
+	void bubbleSort(int (*)(T*, T*));
+	~ListUtility();
+private:
+	LinkedList<T>* list;
 };

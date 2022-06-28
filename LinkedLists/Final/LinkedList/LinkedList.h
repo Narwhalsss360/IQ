@@ -66,7 +66,61 @@ void INode<T>::operator++()
 template <typename T>
 INode<T>::~INode()
 {
-	if (owner) owner->remove(this);
+}
+#pragma endregion
+
+#pragma region PrimitiveNode
+template <typename T>
+PrimitiveNode<T>::PrimitiveNode()
+{
+}
+
+template <typename T>
+PrimitiveNode<T>::PrimitiveNode(T& _data_)
+	: data(_data_)
+{
+}
+
+template <typename T>
+PrimitiveNode<T>::PrimitiveNode(T&& _data_)
+	: data(_data_)
+{
+}
+
+template <typename T>
+T& PrimitiveNode<T>::get() const
+{
+	return data;
+}
+
+template <typename T>
+void PrimitiveNode<T>::set(T& _data_)
+{
+	data = _data_;
+}
+
+template <typename T>
+void PrimitiveNode<T>::set(T&& _data_)
+{
+	data = _data_;
+}
+
+template <typename T>
+PrimitiveNode<T>::operator T& () const
+{
+	return get();
+}
+
+template <typename T>
+void PrimitiveNode<T>::operator=(T& _data_)
+{
+	set(_data_);
+}
+
+template <typename T>
+void PrimitiveNode<T>::operator=(T&& _data_)
+{
+	set(_data_);
 }
 #pragma endregion
 
@@ -298,6 +352,55 @@ INode<T> LinkedList<T>::end()
 
 template <typename T>
 LinkedList<T>::~LinkedList()
+{
+}
+#pragma endregion
+
+#pragma region ListUtility
+template <typename T>
+ListUtility<T>::ListUtility(LinkedList<T>* _list_)
+	: list(_list_)
+{
+}
+
+template <typename T>
+void ListUtility<T>::reverse()
+{
+	Node<T>* current = list->head;
+	list->tail = current;
+
+	while (true)
+	{
+		Node<T>* tempNext = current->nextNode;
+		current->nextNode = current->previousNode;
+		current->previousNode = tempNext;
+
+		current->index = ((-1 * current->index) + (list->count - 1));
+
+		if (tempNext == nullptr)
+		{
+			list->head = current;
+			return;
+		}
+		current = tempNext;
+	}
+}
+
+template <typename T>
+void ListUtility<T>::bubbleSort(int (*compareFunction)(T*, T*))
+{
+	for (NodeIndex Outer = 0; Outer < list->length() - 1; Outer++)
+	{
+		for (NodeIndex Inner = 0; Inner < list->length() - Outer - 1; Inner++)
+		{
+			T* itemA = &(*list)[Inner];
+			T* itemB = &(*list)[Inner + 1];
+			if (compareFunction(itemA, itemB) > 0) list->swap(itemA, itemB);
+		}
+	}
+}
+template <typename T>
+ListUtility<T>::~ListUtility()
 {
 }
 #pragma endregion

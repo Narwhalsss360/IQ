@@ -22,6 +22,11 @@ auto printPersonName = [](DoublyLinkedListItem* listItem)
 	std::cout << '[' << p.index << "]: " << p.getName() << ", Age: " << (int)p.getAge() << '\n';
 };
 
+int nameCompare(Person* pA, Person* pB)
+{
+	return strcmp(pA->getName().c_str(), pB->getName().c_str());
+}
+
 int main()
 {
 #pragma region Adding
@@ -53,7 +58,7 @@ int main()
 #pragma endregion
 
 #pragma region Sorting
-	sortName(&list);
+	bubbleSort<Person>(&list, nameCompare);
 	std::cout << "\nSorted by name [UP]:\n";
 	list.iterate(printPersonName);
 

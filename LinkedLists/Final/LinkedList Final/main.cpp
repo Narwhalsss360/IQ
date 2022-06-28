@@ -75,6 +75,17 @@ void listTest()
 }
 #pragma endregion
 #else
+typedef PrimitiveNode<int> int_node;
+typedef LinkedList<int_node> int_list;
+typedef ListUtility<int_node> int_list_utility;
+
+int_node a(20);
+int_node b(10);
+int_node c(30);
+
+int_list intList = int_list();
+int_list_utility intUtil = int_list_utility(&intList);
+
 LinkedList<YouTubeChannel> channels = LinkedList<YouTubeChannel>();
 
 #pragma region Channels
@@ -89,9 +100,9 @@ YouTubeAdmin* admin;
 #ifndef TEST
 void addChannels()
 {
-	channels += channel_ArranStewart;
 	channels += channel_PaulDavids;
 	channels += channel_PolarBear;
+	channels += channel_ArranStewart;
 }
 
 void addVideos()
@@ -198,6 +209,34 @@ void setData()
 }
 #endif
 
+static int compareChannelName(YouTubeChannel* a, YouTubeChannel* b)
+{
+	return strcmp(a->getName().c_str(), b->getName().c_str());
+}
+
+void sortChannelByName(LinkedList<YouTubeChannel>* list)
+{
+	for (NodeIndex outer = 0; outer < list->length() - 1; outer++)
+	{
+		for (NodeIndex inner = 0; inner < list->length() - outer - 1; inner++)
+		{
+			YouTubeChannel* a = (YouTubeChannel*)list->get(inner);
+			YouTubeChannel* b = (YouTubeChannel*)list->get(inner + 1);
+			if (compareChannelName(a, b) > 0)
+				list->swap(a, b);
+		}
+	}
+}
+
+int compareNumbers(int_node* a, int_node* b)
+{
+	if (a->get() > b->get())
+	{
+		return 1;
+	}
+	return 0;
+}
+
 int main()
 {
 #ifdef TEST
@@ -226,6 +265,24 @@ int main()
 		}
 
 		if (!(channel.getNodeIndex() == channels.length() - 1)) std::cout << "=========================================\n\n";
+	}
+
+	sortChannelByName(&channels);
+
+	intList += a;
+	intList += b;
+	intList += c;
+
+	for (auto& num : intList)
+	{
+		std::cout << num.get() << '\n';
+	}
+
+	intUtil.bubbleSort(compareNumbers);
+
+	for (auto& num : intList)
+	{
+		std::cout << num.get() << '\n';
 	}
 
 	std::cin.get();
