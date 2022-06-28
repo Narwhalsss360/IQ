@@ -66,6 +66,7 @@ void INode<T>::operator++()
 template <typename T>
 INode<T>::~INode()
 {
+	if (owner) owner->remove(this);
 }
 #pragma endregion
 
